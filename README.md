@@ -50,4 +50,4 @@ erl> A.
 2
 ```
 
-Notice that the match would fail against ```erlang{2, 3}```.
+Notice that the match would fail against ```{2, 3}```.
