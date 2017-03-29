@@ -1,6 +1,6 @@
 # Functional Programming in Erlang
 
-This is my working through the course [Functional Programming in Erlang](https://www.futurelearn.com/courses/functional-programming-erlang/) offered by the [University of Kent](https://www.kent.ac.uk/) on the [FutureLearn](http://futurelearn.com/) platform.
+Here I am working through the course [Functional Programming in Erlang](https://www.futurelearn.com/courses/functional-programming-erlang/) offered by the [University of Kent](https://www.kent.ac.uk/) on the [FutureLearn](http://futurelearn.com/) platform.
 
 
 ## Some Notes
@@ -27,7 +27,7 @@ It seemed that integers and floats are separate data types as are tuples and lis
 
 Still six ;-).
 
-The [reference manual lists some other data types](http://erlang.org/doc/reference_manual/data_types.html) which must be covered later on.
+The [reference manual lists some other data types](http://erlang.org/doc/reference_manual/data_types.html) which may be covered later on:
 
 - Bit String and Binaries
 - Reference
