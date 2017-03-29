@@ -39,7 +39,7 @@ The [reference manual lists some other data types](http://erlang.org/doc/referen
 
 ### Pattern matching
 
-Erlang pattern matching is somewhat different to Haskell's. In Haskell, the variables are always "new" (aka "fresh") but in Erlang they can be bound already. If they are bound then they must must the corresponding structure or the whole match fails.
+Erlang pattern matching is somewhat different to Haskell's. In Haskell, the variables are always "new" (aka "fresh") but in Erlang they can be bound already. If they are bound then they must match the corresponding structure or the whole match fails.
 
 Something without a direct equivalent in Haskell:
 
