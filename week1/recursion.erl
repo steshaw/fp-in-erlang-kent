@@ -19,5 +19,4 @@ pieces1 (N) when N >= 0 -> (N*N + N + 2) div 2.
 
 % recursive formula found at http://math.stackexchange.com/a/169436/96366
 pieces2 (0) -> 1;
-pieces2 (1) -> 2;
-pieces2 (N) when N > 1 -> pieces2(N - 1) + N.
+pieces2 (N) when N > 0 -> pieces2(N - 1) + N.
