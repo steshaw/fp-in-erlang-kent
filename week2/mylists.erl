@@ -23,3 +23,8 @@ maximum([X | XS]) -> max(X, maximum(XS)).
 maximum_tr([X | XS]) -> maximum_tr(XS, X).
 maximum_tr([], Maximum) -> Maximum;
 maximum_tr([X | XS], Maximum) -> maximum_tr(XS, max(X, Maximum)).
+
+% Which of the two styles – direct recursion and tail recursion – do you
+% find most natural? Why?
+% The _direct_ recursion style is most natural. It follows the mathematical
+% process of "base case" and "induction case".
