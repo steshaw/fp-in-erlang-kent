@@ -4,7 +4,18 @@
 
 -module(wk2).
 
--export([head/1,tail/1,second/1,sum/1,sumTail/1,product/1,productTail/1,max/1,maxTail/1]).
+-export(
+  [ head/1
+  , tail/1
+  , second/1
+  , sum/1
+  , sumTail/1
+  , product/1
+  , productTail/1
+  , maximum/1
+  , maxTail/1
+  ]
+).
 
 %% head and tail
 head([]) -> [];
@@ -35,12 +46,10 @@ productTail([],P) -> P;
 productTail([X|Xs],P) -> productTail(Xs,P*X).
 
 
-%% max: return the highest value in a list.
-max([]) -> [];
-max([X|Xs]) -> case length([X|Xs]) of
-    1 -> X;  %% return the surviving value
-    _Else -> max([max(X,head(Xs))|tail(Xs)])  %% max of 1st 2 elements then rest of list recursively.
-end.
+%% maximum: return the highest value in a list.
+maximum([X]) -> X;
+maximum([X|Xs]) -> maximum([max(X,head(Xs))|tail(Xs)]).  %% max of 1st 2 elements then rest of list recursively.
+
 %% maxTail: return highest value in a list via tail recursion.
 maxTail([]) -> [];
 maxTail([X|Xs]) -> maxTail(X,Xs).  %% Use 1st argument for storing max so far.
