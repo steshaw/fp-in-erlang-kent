@@ -4,6 +4,8 @@
  , product_tr/1
  , maximum/1
  , maximum_tr/1
+ , double/1
+ , evens/1
  ]
 ).
 
@@ -28,3 +30,15 @@ maximum_tr([X | XS], Maximum) -> maximum_tr(XS, max(X, Maximum)).
 % find most natural? Why?
 % The _direct_ recursion style is most natural. It follows the mathematical
 % process of "base case" and "induction case".
+
+double([]) -> [];
+double([N | NS]) -> [2 * N | double(NS)].
+
+is_even(N) -> N rem 2 == 0.
+
+evens([]) -> [];
+evens([N | NS]) ->
+  case is_even(N) of
+    true  -> [N | evens(NS)];
+    false -> evens(NS)
+  end.
