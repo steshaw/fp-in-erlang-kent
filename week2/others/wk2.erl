@@ -48,7 +48,7 @@ productTail([X|Xs],P) -> productTail(Xs,P*X).
 
 %% maximum: return the highest value in a list.
 maximum([X]) -> X;
-maximum([X|Xs]) -> maximum([max(X,head(Xs))|tail(Xs)]).  %% max of 1st 2 elements then rest of list recursively.
+maximum([X | Xs]) -> maximum([max(X, head(Xs)) | tail(Xs)]).  %% max of 1st 2 elements then rest of list recursively.
 
 %% maxTail: return highest value in a list via tail recursion.
 maxTail([]) -> [];
