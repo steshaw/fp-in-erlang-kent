@@ -14,6 +14,11 @@
  , sort/1
  , sort_test/0
  , insert/2
+ , modes/1
+ , modes_test/0
+ , occurences/2
+ , unique/1
+ , uniq/1
  ]
 ).
 
@@ -127,4 +132,46 @@ nth_test() ->
 %  , nth(4, [1, 2, 3]) == 1/0
   ].
 
-% occurs: How many times does a value occur in the list?
+% The modes of a list of numbers.
+% This is a list consisting of the numbers that occur most frequently
+% in the list; if there is is just one, this will be a list with one
+% element only
+%
+% Sigh, this is a very slow implementation because of the number
+% of traversals through the list.
+-spec modes([number()]) -> [number()].
+modes([]) -> [];
+modes(Ns) ->
+  FrequencyMaps = frequencies(Ns),
+  Frequencies = lists:map(fun ({_, F}) -> F end, FrequencyMaps),
+  MaximumFrequency = maximum(Frequencies),
+  MaximumFrequencyMaps  = lists:filter(fun ({_, F}) -> F == MaximumFrequency end, FrequencyMaps),
+  lists:map(fun ({N, _}) -> N end, MaximumFrequencyMaps).
+
+% Expect a list of trues.
+modes_test() ->
+  [ modes([]) == []
+  , modes([1]) == [1]
+  , modes([1,2,3,4]) == [1,2,3,4]
+  , modes([1,2,2,3,4]) == [2]
+  , modes([6,4,5,9,2,5,6]) == [5, 6]
+  ].
+
+% The frequencies/occurences of each unique element of a list.
+% Returns a list of tuples {N, occurrences(N)}.
+frequencies(Ns) ->
+  Us = unique(Ns),
+  lists:map(fun(N) -> {N, occurences(N, Ns)} end, Us).
+
+% unique - just the unique elements of the list.
+unique(Xs) -> uniq(sort(Xs)).
+
+% uniq - unique elements of sorted list.
+uniq([]) -> [];
+uniq([X, X | Xs]) -> uniq([X | Xs]);
+uniq([X | Xs]) -> [X | uniq(Xs)].
+
+% occurences: How many times does a value occur in the list?
+occurences(_, []      ) -> 0;
+occurences(X, [X | Xs]) -> 1 + occurences(X, Xs);
+occurences(X, [_ | Xs]) -> occurences(X, Xs).
