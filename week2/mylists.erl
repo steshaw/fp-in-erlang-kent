@@ -145,7 +145,7 @@ modes(Ns) ->
   FrequencyMaps = frequencies(Ns),
   Frequencies = lists:map(fun ({_, F}) -> F end, FrequencyMaps),
   MaximumFrequency = maximum(Frequencies),
-  MaximumFrequencyMaps  = lists:filter(fun ({_, F}) -> F == MaximumFrequency end, FrequencyMaps),
+  MaximumFrequencyMaps = lists:filter(fun ({_, F}) -> F == MaximumFrequency end, FrequencyMaps),
   lists:map(fun ({N, _}) -> N end, MaximumFrequencyMaps).
 
 % Expect a list of trues.
