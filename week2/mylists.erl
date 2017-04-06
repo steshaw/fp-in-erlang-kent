@@ -9,6 +9,11 @@
  , median/1
  , median_test/0
  , average/2
+ , nth/2
+ , nth_test/0
+ , sort/1
+ , sort_test/0
+ , insert/2
  ]
 ).
 
@@ -88,9 +93,38 @@ average(A, B) -> (A + B) / 2.
 % Other uses functions.
 
 % Sort the list.
-sort(XS) -> lists:sort(XS).
+sort([]) -> [];
+sort([X]) -> [X];
+sort([X | Xs]) -> insert(X, sort(Xs)).
+
+% Expect list of trues.
+sort_test() ->
+  [ sort([]) == []
+  , sort([1]) == [1]
+  , sort([1,2,3]) == [1,2,3]
+  , sort([3,2,1]) == [1,2,3]
+  , sort([2,3,1]) == [1,2,3]
+  , sort([2,1,3]) == [1,2,3]
+  ].
+
+% Insert X into a sorted list.
+insert(X, []) -> [X];
+insert(X, [Y | Ys] = Xs) ->
+  case X < Y of
+    true  -> [X | Xs];
+    false -> [Y | insert(X, Ys)]
+  end.
 
 % The nth element of the list.
-nth(N, Xs) -> lists:nth(N, Xs).
+nth(1, [X | _ ]) -> X;
+nth(N, [_ | Xs]) -> nth(N - 1, Xs).
+
+% Expecting [true, true, true].
+nth_test() ->
+  [ nth(1, [1, 2, 3]) == 1
+  , nth(2, [1, 2, 3]) == 2
+  , nth(3, [1, 2, 3]) == 3
+%  , nth(4, [1, 2, 3]) == 1/0
+  ].
 
 % occurs: How many times does a value occur in the list?
