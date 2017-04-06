@@ -1,0 +1,7 @@
+@author Steven Shaw <steven@steshaw.org>
+@copyright 2017 Steven Shaw
+@version 0.1.0
+@title Week 2 of Functional Programming in Erlang
+@doc
+This is week 2 of the course "Functional Programming in Erlang" from the
+University of Kent. Week 2 covers functional programming with lists.

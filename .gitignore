@@ -1,1 +1,10 @@
 *.beam
+
+# Ignore edoc files
+edoc-info
+erlang.png
+index.html
+modules-frame.html
+mylists.html
+overview-summary.html
+stylesheet.css
